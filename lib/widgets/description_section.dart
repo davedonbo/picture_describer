@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//class that handles the main content of the response from google vision api and also the text to speech button.
 class DescriptionSection extends StatelessWidget {
   final bool isLoading;
   final String description;

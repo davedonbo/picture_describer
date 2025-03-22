@@ -30,6 +30,7 @@ class ControlButtons extends StatelessWidget {
   }
 }
 
+//for accessibility sake, this large button widget was created so all buttons on the screen would be modelled after it
 class _LargeButton extends StatelessWidget {
   final IconData icon;
   final String text;

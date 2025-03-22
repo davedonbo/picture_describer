@@ -3,39 +3,15 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../app/app.dart';
 
+//class to send requests to google vision cloud api and manage the response
 class VisionService {
   late final String _visionApiUrl =
       'https://vision.googleapis.com/v1/images:annotate?key=${AppConfig.visionApiKey}';
-
-  // Future<String> analyzeImage(String base64Image) async {
-  //   try {
-  //     final response = await http.post(
-  //       Uri.parse(_visionApiUrl),
-  //       body: jsonEncode({
-  //         'requests': [
-  //           {
-  //             'image': {'content': base64Image},
-  //             'features': [
-  //               {'type': 'LABEL_DETECTION', 'maxResults': 10},
-  //               {'type': 'TEXT_DETECTION', 'maxResults': 10},
-  //               {'type': 'IMAGE_PROPERTIES'},
-  //             ],
-  //           }
-  //         ],
-  //       }),
-  //     );
-  //
-  //     return _parseVisionResponse(jsonDecode(response.body));
-  //   } catch (e) {
-  //     throw Exception('Error analyzing image: $e');
-  //   }
-  // }
 
   Future<String> analyzeImage(String base64Image) async {
     try {
       final response = await http.post(
         Uri.parse(_visionApiUrl),
-        headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'requests': [
             {
@@ -50,17 +26,12 @@ class VisionService {
         }),
       );
 
-      print('VISION API RAW RESPONSE: ${response.body}');
-
-      if (response.statusCode != 200) {
-        throw Exception('Vision API error: ${response.body}');
-      }
-
       return _parseVisionResponse(jsonDecode(response.body));
     } catch (e) {
       throw Exception('Error analyzing image: $e');
     }
   }
+
 
 
   String _parseVisionResponse(Map<String, dynamic> response) {

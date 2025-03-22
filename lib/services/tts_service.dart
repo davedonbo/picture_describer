@@ -1,5 +1,6 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
+//class for text to speech service to read out detected content from an image to the user
 class TtsService {
   final FlutterTts _tts = FlutterTts();
 

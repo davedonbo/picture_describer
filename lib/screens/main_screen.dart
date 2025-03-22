@@ -24,14 +24,14 @@ class _MainScreenState extends State<MainScreen> {
   File? _image;
   String _description = '';
   bool _isLoading = false;
-  final TtsService _ttsService = TtsService();
-  final ImageService _imageService = ImageService();
-  final VisionService _visionService = VisionService();
+  final TtsService _ttsService = TtsService(); //initialising text to speech service
+  final ImageService _imageService = ImageService(); //initialising image service
+  final VisionService _visionService = VisionService(); //initialising google vision service
 
   Future<void> _processImage(File image) async {
     setState(() {
-      _isLoading = true;
-      _description = '';
+      _isLoading = true; //this is to keep the state of the circular progress bar to tell if a response is still loading
+      _description = ''; // place holder for displaying description to user
     });
 
     try {

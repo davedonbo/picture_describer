@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
+//class to handle preliminary view of uploaded images before they are sent for processing at google vision api.
 class ImagePreview extends StatelessWidget {
   final File? image;
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 
+//class to allow user to pick an image from gallery and other sources.
 class ImageService {
   final ImagePicker _picker = ImagePicker();
 
